@@ -16,7 +16,6 @@ export default function Home() {
         </h1>
         <p className="max-w-2xl text-lg text-slate-400 mb-10">
           Un equipo en crecimiento desafiando los límites de la robótica competitiva. 
-          Expertos en seguidores de líneas y desarrollo tecnológico.
         </p>
         <a href="#eventos" className="venado-btn">Ver Eventos</a>
       </section>
@@ -28,25 +27,30 @@ export default function Home() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <EventCard 
-            date="12 y 13 DE FEBRERO"
-            title="Robomatrix Continental Master"
-            location="Universidad La Salle, Oaxaca"
-            desc="Competencia internacional de alto nivel."
+            date="10 de Abril de 2026"
+            title="CRYDTEM X ANIVERSARIO"
+            location="Universidad CUI, Ixlahuaca Edo de México"
+            desc="Decimo aniversario del CRYDTEM, un evento que celebra la innovación y el talento en la robótica competitiva. Venados Robotics se prepara para mostrar sus últimos avances y competir con los mejores equipos."
           />
           <EventCard 
-            date="PRÓXIMAMENTE"
-            title="CRYDTEM"
-            location="Sede Pendiente"
+            date="14 de Abril de 2026"
+            title="4TO CONCURSO DE ROBÓTICA TESVB MECHABOTS ACADEMY"
+            location="TESVB, Valle de Bravo Edo de México"
             desc="Diseñando nuevas estrategias para el próximo reto."
           />
         </div>
       </section>
 
-      {/* CONTACTO */}
+{/* CONTACTO */}
       <section id="contacto" className="py-24 bg-gradient-to-t from-black to-transparent text-center border-t border-slate-800">
         <h2 className="font-title text-3xl mb-6">Contáctanos</h2>
         <p className="text-slate-400 mb-10">¿Interesado en patrocinar o colaborar con el equipo?</p>
-        <a href="mailto:venadosrobotics@gmail.com" className="venado-btn text-lg py-4 px-10">
+        <a 
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=venadosrobotics@gmail.com&su=Contacto%20con%20Venados%20Robotics&body=Hola%20equipo%20de%20Venados%20Robotics,%0A%0AMe%20gustaría%20contactarlos%20para%20hablar%20sobre%20una%20posible%20colaboración/patrocinio.%0A%0ASaludos." 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="venado-btn text-lg py-4 px-10"
+        >
           Enviar Correo
         </a>
       </section>
