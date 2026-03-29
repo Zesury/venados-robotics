@@ -437,34 +437,36 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border); pa
 
 /* ── Tablets / Pantallas Pequeñas (900px) ── */
 @media (max-width: 900px) {
-  /* Menú Lateral Deslizante (Sidebar) */
+  /* Menú Lateral Deslizante (Fijado y sin desbordamiento) */
   .nav-links { 
     display: flex;
     flex-direction: column; 
-    justify-content: flex-start; /* Todo ordenado desde arriba */
+    justify-content: flex-start;
     align-items: center; 
     position: fixed; 
     top: var(--nav-h); 
-    right: -100%;                /* Escondido fuera de la pantalla a la derecha */
+    right: 0;                    /* Lo pegamos al borde derecho... */
     bottom: 0; 
-    width: 260px;                /* Ancho perfecto para celular */
-    background: var(--bg);       /* Fondo completamente oscuro y sólido */
-    border-left: 1px solid var(--cyan-dim); /* Borde sutil a la izquierda */
+    width: 260px;
+    background: var(--bg);
+    border-left: 1px solid var(--cyan-dim);
     padding: 40px 20px; 
     gap: 16px; 
-    transition: right 0.3s ease-in-out; /* Deslizamiento de lado */
-    overflow-y: auto;
-    box-shadow: -10px 0 30px rgba(0,0,0,0.8); /* Sombra para separar de la página */
     
-    /* Reseteamos opacidades raras */
+    /* ...pero lo empujamos 100% fuera de la pantalla con Transform */
+    transform: translateX(100%); 
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+    
+    overflow-y: auto;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+    
     opacity: 1 !important;
     visibility: visible !important;
-    transform: none !important;
   }
   
-  /* Cuando le das clic a la hamburguesa */
+  /* Al presionar la hamburguesa, el menú regresa a su posición 0 (adentro) */
   .nav-links.open { 
-    right: 0; /* El menú entra en la pantalla */
+    transform: translateX(0) !important; 
   }
   
   .nav-link { 
