@@ -51,14 +51,31 @@
 /* =====================================================================
    2. RESET Y BASE
 ===================================================================== */
+/* =====================================================================
+   2. RESET Y BASE (BLINDAJE ANTI-DESBORDAMIENTO)
+===================================================================== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
-body {
-  background: var(--bg); color: var(--text);
-  font-family: var(--font-body); font-size: 1.05rem;
-  line-height: 1.7; overflow-x: hidden; min-height: 100vh;
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden !important; /* Bloqueo absoluto de scroll lateral */
+  -webkit-overflow-scrolling: touch;
 }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--bg); 
+  color: var(--text);
+  font-family: var(--font-body); 
+  font-size: 1.05rem;
+  line-height: 1.7; 
+  min-height: 100vh;
+  position: relative; /* Mantiene a los orbes y animaciones bajo control */
+}
+
 img { display: block; max-width: 100%; height: auto; }
+/* ... (deja el resto de los estilos a, ul, button igual) ... */
 a { color: inherit; text-decoration: none; }
 ul { list-style: none; }
 button { cursor: pointer; font-family: inherit; border: none; background: none; }
@@ -438,6 +455,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border); pa
 /* ── Tablets / Pantallas Pequeñas (900px) ── */
 @media (max-width: 900px) {
   /* Menú Lateral Deslizante (Fijado y sin desbordamiento) */
+/* Menú Lateral Deslizante (Fijado y sin desbordamiento) */
   .nav-links { 
     display: flex;
     flex-direction: column; 
@@ -445,7 +463,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border); pa
     align-items: center; 
     position: fixed; 
     top: var(--nav-h); 
-    right: 0;                    /* Lo pegamos al borde derecho... */
+    right: 0; 
     bottom: 0; 
     width: 260px;
     background: var(--bg);
@@ -453,20 +471,18 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border); pa
     padding: 40px 20px; 
     gap: 16px; 
     
-    /* ...pero lo empujamos 100% fuera de la pantalla con Transform */
+    /* LA MAGIA INVISIBLE: Lo esconde física y visualmente del navegador */
     transform: translateX(100%); 
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+    visibility: hidden; 
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s;
     
     overflow-y: auto;
     box-shadow: -10px 0 30px rgba(0,0,0,0.8);
-    
-    opacity: 1 !important;
-    visibility: visible !important;
   }
   
-  /* Al presionar la hamburguesa, el menú regresa a su posición 0 (adentro) */
   .nav-links.open { 
     transform: translateX(0) !important; 
+    visibility: visible !important; /* Lo revive cuando presionas el botón */
   }
   
   .nav-link { 
