@@ -116,6 +116,15 @@ export default function Navbar() {
             CONTACTO
           </Link>
         </li>
+        <li>
+  <Link 
+    href="/competencia" 
+    className={`nav-link ${pathname === '/competencia' ? 'active' : ''}`}
+    onClick={closeMenu}
+  >
+    TORNEO
+  </Link>
+</li>
       </ul>
     </nav>
   );
